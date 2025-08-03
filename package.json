@@ -1,0 +1,27 @@
+{
+  "name": "cdn-upload-worker",
+  "version": "1.0.0",
+  "description": "点鸭社区CDN上传 - Cloudflare Workers版本",
+  "main": "cdn-worker.js",
+  "scripts": {
+    "build": "echo 'No build step required for Workers'",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "tail": "wrangler tail"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "cdn",
+    "upload",
+    "file-upload"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
