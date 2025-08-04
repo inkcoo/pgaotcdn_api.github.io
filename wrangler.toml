@@ -1,4 +1,4 @@
-name = "cfcdn"
+name = "cfcdn1"
 compatibility_date = "2023-12-01"
 main = "src/index.ts"
 
