@@ -1,64 +1,56 @@
-# Cloudflare CDN 文件上传服务
+# CFCDN - Cloudflare Workers 文件上传服务
 
-这个项目提供了一个简单的文件上传服务，可以将文件上传到第三方 CDN，并在 Cloudflare Pages 上运行。
+一个基于 Cloudflare Workers 的文件上传服务，支持拖拽上传到第三方CDN。
 
-## 功能特点
+## 功能特性
 
-- 基于 Hono 框架构建，专为 Cloudflare Workers 优化
-- 支持跨域请求
-- 模拟真实浏览器请求头
-- 自动处理文件扩展名
-- 简单易用的前端界面
+- 🚀 基于 Cloudflare Workers 部署，快速稳定
+- 📁 支持拖拽上传和点击选择文件
+- 🔄 支持多文件批量上传
+- 📱 响应式设计，支持移动端
+- 🎨 现代化UI界面
+- 🔗 自动生成CDN链接
+- 📋 一键复制链接功能
 
-## 部署到 Cloudflare Pages
+## 部署方式
 
-1. 将此仓库推送到 GitHub
-2. 在 Cloudflare Pages 控制台中创建新项目
-3. 连接到您的 GitHub 仓库
-4. 设置构建配置：
-   - 构建命令：`npm run build`
-   - 输出目录：`dist`
-5. 部署！
+### Cloudflare Workers 部署
 
-## 本地开发
-
+1. 安装依赖：
 ```bash
-# 安装依赖
 npm install
+```
 
-# 启动开发服务器
+2. 本地开发：
+```bash
 npm run dev
 ```
 
-## API 端点
-
-### 上传文件
-
-```
-POST /api/upload
-
-表单数据：
-- file: 要上传的文件
-```
-
-### 获取纯文本链接
-
-```
-GET /api/link?link=<url>&ext=<extension>
-
-查询参数：
-- link: CDN 返回的链接
-- ext (可选): 文件扩展名
+3. 部署到 Cloudflare Workers：
+```bash
+npm run deploy
 ```
 
 ## 技术栈
 
-- [Hono](https://hono.dev/) - 轻量级服务器端框架
-- TypeScript
-- Cloudflare Workers
+- **Cloudflare Workers** - 边缘计算平台
+- **Hono** - 轻量级Web框架
+- **TypeScript** - 类型安全的JavaScript
+- **HTML5 File API** - 文件上传处理
 
-## 注意事项
+## API 接口
 
-- 此服务仅适用于学习和测试目的
-- 上传的文件存储在第三方 CDN 上，我们不保证永久可用性
-- 请勿上传违法、侵权或敏感内容
+### 文件上传
+- **POST** `/upload` - 上传文件到CDN
+- **GET** `/link` - 获取纯文本链接
+
+## 免责声明
+
+1. 本服务仅供学习和测试使用，请勿上传违法、侵权或敏感内容。
+2. 文件由第三方CDN存储，本站不保证永久可用性。
+3. 请勿上传涉及隐私、商业机密或其他受法律保护的内容。
+4. 使用本服务即表示您同意承担所有相关责任。
+
+## 许可证
+
+MIT License

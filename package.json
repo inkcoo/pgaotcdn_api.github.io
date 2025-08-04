@@ -1,12 +1,11 @@
 {
   "name": "cfcdn",
   "version": "1.0.0",
-  "description": "A file upload service for Cloudflare Pages",
+  "description": "A file upload service for Cloudflare Workers",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts",
-    "build": "wrangler deploy --dry-run --outdir=dist"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "hono": "^3.12.0"

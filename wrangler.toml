@@ -1,9 +1,9 @@
 name = "cfcdn"
-main = "src/index.ts"
 compatibility_date = "2023-12-01"
+main = "src/index.ts"
 
-[build]
-command = "npm run build"
+[env.production]
+name = "cfcdn"
 
-[vars]
+[env.production.vars]
 NODE_VERSION = "18"
