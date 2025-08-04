@@ -4,7 +4,7 @@ import uploadApp from '../api/upload'
 
 const app = new Hono()
 
-// 静态文件服务
+// 静态文件服务 - 修改路径配置
 app.use('/*', serveStatic({ root: './' }))
 
 // 上传API路由
