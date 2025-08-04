@@ -1,27 +1,18 @@
 {
-  "name": "cdn-upload-worker",
+  "name": "cfcdn",
   "version": "1.0.0",
-  "description": "点鸭社区CDN上传 - Cloudflare Workers版本",
-  "main": "cdn-worker.js",
+  "description": "A file upload service for Cloudflare Pages",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "echo 'No build step required for Workers'",
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "tail": "wrangler tail"
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "build": "echo 'Building project'"
   },
-  "keywords": [
-    "cloudflare",
-    "workers",
-    "cdn",
-    "upload",
-    "file-upload"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
+  "dependencies": {
+    "hono": "^3.12.0"
+  },
   "devDependencies": {
-    "wrangler": "^3.0.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "wrangler": "^3.22.0"
   }
-} 
+}

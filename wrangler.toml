@@ -1,19 +1,9 @@
-name = "cdn-upload-api"
-main = "cdn-worker.js"
-compatibility_date = "2024-01-01"
+name = "cfcdn"
+main = "src/index.ts"
+compatibility_date = "2023-12-01"
 
-# 环境变量
+[build]
+command = "npm run build"
+
 [vars]
-ENVIRONMENT = "production"
-
-# KV命名空间（可选，如果需要日志功能）
-# 注意：在Git部署中，您需要在Cloudflare控制台手动创建KV命名空间
-# 然后在环境变量中配置绑定
-# [[kv_namespaces]]
-# binding = "CDN_LOGS"
-# id = "your-kv-namespace-id"
-# preview_id = "your-preview-kv-namespace-id"
-
-# 开发环境配置
-[env.development]
-name = "cdn-upload-api-dev" 
+NODE_VERSION = "18"
