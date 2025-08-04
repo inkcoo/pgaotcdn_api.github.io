@@ -116,10 +116,10 @@ class CDNUploader {
 // 上传主路由
 app.post('/upload', async (c) => {
   const formData = await c.req.parseBody()
-  const file = formData['file'] as File | undefined
+  const files = formData['files[]'] as File[] | File | undefined
   
   // 检查文件是否存在
-  if (!file) {
+  if (!files) {
     c.status(400)
     return c.json({
       success: false,
@@ -127,43 +127,93 @@ app.post('/upload', async (c) => {
     })
   }
   
+  // 处理单个文件或多个文件
+  const fileList = Array.isArray(files) ? files : [files]
+  
   // 上传到 CDN
   const uploader = new CDNUploader()
-  const result = await uploader.upload(file)
+  const results = []
+  
+  for (const file of fileList) {
+    const result = await uploader.upload(file)
+    results.push({
+      ...result,
+      filename: file.name
+    })
+  }
   
   // 设置响应状态码
-  if (!result.success) {
+  const allSuccess = results.every(r => r.success)
+  if (!allSuccess) {
     c.status(500)
   }
   
-  return c.json(result)
+  // 如果只有一个文件，保持原有的响应格式
+  if (results.length === 1) {
+    return c.json(results[0])
+  }
+  
+  // 多个文件的响应格式
+  return c.json({
+    success: allSuccess,
+    results
+  })
 })
 
 // 纯文本链接接口
 app.get('/link', (c) => {
   const url = c.req.query('link')
+  const urls = c.req.query('links')
   
-  if (!url) {
+  // 检查参数是否存在
+  if (!url && !urls) {
     c.status(400)
-    return c.text('缺少 link 参数')
+    return c.text('缺少 link 或 links 参数')
   }
   
-  // 尝试从 url 参数获取扩展名
-  let ext = c.req.query('ext')?.toLowerCase() || ''
-  
-  if (!ext) {
-    const match = url.match(/\.([a-z0-9]{1,5})$/i)
-    if (match) {
-      ext = match[1].toLowerCase()
+  // 处理单个链接
+  if (url) {
+    // 尝试从 url 参数获取扩展名
+    let ext = c.req.query('ext')?.toLowerCase() || ''
+    
+    if (!ext) {
+      const match = url.match(/\.([a-z0-9]{1,5})$/i)
+      if (match) {
+        ext = match[1].toLowerCase()
+      }
     }
+    
+    let finalUrl = url
+    if (ext && !new RegExp(`\\.${ext}$`, 'i').test(url)) {
+      finalUrl += `.${ext}`
+    }
+    
+    return c.text(finalUrl)
   }
   
-  let finalUrl = url
-  if (ext && !new RegExp(`\\.${ext}$`, 'i').test(url)) {
-    finalUrl += `.${ext}`
+  // 处理多个链接
+  if (urls) {
+    const urlList = urls.split(',').map(u => decodeURIComponent(u))
+    const finalUrls = urlList.map(url => {
+      // 尝试从 url 获取扩展名
+      let ext = ''
+      const match = url.match(/\.([a-z0-9]{1,5})$/i)
+      if (match) {
+        ext = match[1].toLowerCase()
+      }
+      
+      let finalUrl = url
+      if (ext && !new RegExp(`\\.${ext}$`, 'i').test(url)) {
+        finalUrl += `.${ext}`
+      }
+      
+      return finalUrl
+    })
+    
+    return c.text(finalUrls.join('\n'))
   }
   
-  return c.text(finalUrl)
+  return c.text('')
 })
 
 export default app
