@@ -1,42 +1,26 @@
-# CFCDN - Cloudflare Workers 文件上传服务
+# Cloudflare Workers托管免费文件上传服务
 
-一个基于 Cloudflare Workers 的文件上传服务，支持拖拽上传到第三方CDN。
+一个托管在 Cloudflare Workers 上的免费文件上传服务。基于<a href="https://github.com/inkcoo/pgaotcdn_api" target="_blank">inkcoo/pgaotcdn_api</a>项目修改为Hono框架在Cloudflare Workers上部署.
 
 ## 功能特性
 
-- 🚀 基于 Cloudflare Workers 部署，快速稳定
+- 🚀 基于 Cloudflare Workers 部署，优选IP支持快速稳定
 - 📁 支持拖拽上传和点击选择文件
 - 🔄 支持多文件批量上传
 - 📱 响应式设计，支持移动端
 - 🎨 现代化UI界面
 - 🔗 自动生成CDN链接
 - 📋 一键复制链接功能
+- 可生成纯文本链接
 
 ## 部署方式
 
 ### Cloudflare Workers 部署
 
-1. 安装依赖：
-```bash
-npm install
-```
+1.构建命令: (留空)
 
-2. 本地开发：
-```bash
-npm run dev
-```
-
-3. 部署到 Cloudflare Workers：
-```bash
-npm run deploy
-```
-
+2.部署命令: npm run deploy
 ## 技术栈
-
-- **Cloudflare Workers** - 边缘计算平台
-- **Hono** - 轻量级Web框架
-- **TypeScript** - 类型安全的JavaScript
-- **HTML5 File API** - 文件上传处理
 
 ## API 接口
 
@@ -53,4 +37,4 @@ npm run deploy
 
 ## 许可证
 
-MIT License
+GPL-3.0
