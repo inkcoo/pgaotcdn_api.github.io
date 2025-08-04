@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "build": "echo 'Building project'"
+    "build": "wrangler build"
   },
   "dependencies": {
     "hono": "^3.12.0"
