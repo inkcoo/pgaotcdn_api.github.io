@@ -1,5 +1,5 @@
 {
-  "name": "cfcdn",
+  "name": "pgaotcdn_cf_worker",
   "version": "1.0.0",
   "description": "A file upload service for Cloudflare Workers",
   "main": "src/index.ts",
