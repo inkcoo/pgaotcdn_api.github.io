@@ -43,8 +43,8 @@
             <p>4. 本站默认开启URL记录，所有上传链接将被记录保留。</p>
             <p>5. 使用本服务即表示您同意承担所有相关责任。</p>
             <p>6. 本站不提供任何技术支持，如有问题，请自行解决。</p>
-            <p>7. 本站的API代码在<a href="https://github.com/inkcoo/pgaotcdn_api" target="_blank">GitHub</a>上开源。</p>
-            <p>本页面在Cloudflare Workers</a>上托管运行，启用优选Ip加速</p>
+            <p>7. 本站的API代码在<a href="https://github.com/inkcoo/pgaotcdn_api" target="_blank"><img src="https://img.shields.io/github/stars/inkcoo/pgaotcdn_api.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars"></a>上开源。</p>
+             <p>本页面在Cloudflare Workers</a>上托管运行，启用优选Ip加速,项目开源地址<a href="https://github.com/inkcoo/pgaotcdn_api.github.io<" target="_blank"><img src="https://img.shields.io/github/stars/inkcoo/pgaotcdn_api.github.io.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars"></a><p>
         </div>
     </div>
 
@@ -164,7 +164,7 @@
                         // 显示文件名和状态
                         for (const result of data.results) {
                             if (result.success && result.url) {
-                                resultHtml += `<div style='color:rgba(255,255,255,0.9);font-size:0.9rem;margin-bottom:5px;margin-top:10px;'>📄 ${result.filename}</div>`;
+                                resultHtml += `<div style='color: rgb(10 39 110 / 90%);font-size:0.9rem;margin-bottom:5px;margin-top:10px;'>📄 ${result.filename}</div>`;
                             } else {
                                 resultHtml += `<div style='color:#ef4444;font-size:0.9rem;margin-bottom:5px;margin-top:10px;'>❌ ${result.filename}: 上传失败</div>`;
                             }
