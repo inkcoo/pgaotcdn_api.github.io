@@ -7,6 +7,11 @@ const app = new Hono()
 // 启用 CORS
 app.use('*', cors())
 
+// 处理 CORS 预检请求
+app.options('*', (c) => {
+  return c.text('', 204)
+})
+
 // 类型定义
 interface UploadResult {
   success: boolean
