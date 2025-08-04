@@ -4,11 +4,14 @@ import uploadApp from '../api/upload'
 
 const app = new Hono()
 
-// 静态文件服务 - 修改路径配置
-app.use('/*', serveStatic({ root: './' }))
-
-// 上传API路由
+// 上传API路由 - 放在静态文件服务之前
 app.route('/upload', uploadApp)
 app.route('/link', uploadApp)
+
+// 根路径返回 index.html
+app.get('/', serveStatic({ path: './index.html' }))
+
+// 静态文件服务
+app.use('/*', serveStatic({ root: './' }))
 
 export default app
