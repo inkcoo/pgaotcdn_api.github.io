@@ -1,4 +1,4 @@
-name = "cfcdn"
+name = "inkimagecdn"
 main = "src/index.ts"
 compatibility_date = "2023-12-01"
 
